@@ -1,7 +1,10 @@
 from datetime import datetime
 from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
-import server.database as database, server.crud as crud, server.schemas as schemas, server.models as models
+from server import database, crud, models
+# from server import database, crud, models
+# import server.database as database, server.crud as crud, server.models as models
+# from .server import database, crud, models
 from typing import Union
 import requests
 
@@ -18,10 +21,14 @@ app = FastAPI(
 @app.post("/questions/{questions_num}")
 def get_questions(questions_num: int, db: Session = Depends(database.get_db)):
     # Return last question from db, or None if none exists
-    print(f'Last question is: {crud.get_last_question(db)}')
-    print(crud.get_all_questions(db))
-
-    last_question: Union[models.Question, None] = crud.get_last_question(db)
+    last_question = crud.get_last_question(db)
+    if last_question:
+        # MAke q_date readable
+        last_question.q_date = last_question.q_date.strftime("%Y-%m-%d")
+        last_question_JSON = last_question.__dict__.copy()
+        last_question_JSON.pop('_sa_instance_state')
+        print(f'Last question is: {last_question.question}')
+        print(f'Last question JSON is: {last_question_JSON}')
 
     for _ in range(questions_num):
         while True:
@@ -45,4 +52,4 @@ def get_questions(questions_num: int, db: Session = Depends(database.get_db)):
                 crud.create_question(db, question)
                 break
 
-    return last_question
+    return last_question_JSON if last_question else {} 
