@@ -1,7 +1,7 @@
 from datetime import datetime
 from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
-import database, models, schemas, crud
+import server.database as database, server.crud as crud, server.schemas as schemas, server.models as models
 from typing import Union
 import requests
 
