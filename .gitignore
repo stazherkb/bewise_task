@@ -1,0 +1,15 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+/venv/
+/venv3*/
+
+# Local development settings
+/.vscode/
+/.idea/
+/.venv/
+
+# Build output
+/build/
+/dist/
+*.egg-info/
