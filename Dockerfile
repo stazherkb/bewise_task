@@ -1,4 +1,4 @@
-FROM python:3.11
+FROM python:3.11.1-slim
 
 # WORKDIR /app
 
@@ -9,6 +9,3 @@ COPY server/ server/
 
 RUN pip install -r requirements.txt --no-cache-dir
 # RUN ./venv311/Scripts/activate
-
-CMD ["python", "main.py"]
-# CMD ["python", "main.py"]
