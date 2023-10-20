@@ -2,6 +2,7 @@ from datetime import datetime
 from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
 from server import database, crud, models
+from loguru import logger as l
 # from server import database, crud, models
 # import server.database as database, server.crud as crud, server.models as models
 # from .server import database, crud, models
