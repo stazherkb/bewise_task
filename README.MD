@@ -102,7 +102,7 @@ docker-compose up
 ```
 В docker-compose прописаны 2 сервиса - образ питона и образ PostgreSQL.
 Первый сервис сам скачает питон, установит все зависимости и запустит uvicorn на localhost:8008 (uvicorn - это такой локальный сервер). Когда docker-compose закончит сборку и запустит проект, Вы увидите в терминале надпись `Uvicorn running at http://0.0.0.0:8000`, которая говорит о том, что сервер успешно запущен.
-[Пример успешного запуска](https://github.com/stazherkb/bewise_task/files/02_dcompose_res.png)
+[Пример успешного запуска](https://github.com/stazherkb/bewise_task/tree/master/files/02_dcompose_res.png)
 
 Открываем в браузере http://localhost:8008/Docs. Если все прошло без ошибок, должен появиться простенький интерфейс с описанием API проекта и примерами запросов. [Итоговый вид](files/01_started_app.png).  
 
