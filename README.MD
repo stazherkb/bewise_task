@@ -58,56 +58,49 @@ sudo apt-get install ./docker-desktop-<version>-<arch>.deb
 
 3. Запускаем Docker Desktop (должен появиться последним в списке приложений)
 
-
-
-
-## Оп
-
-Vbyb .
-
-## Installation
-
-### Docker Desktop (Windows)
-
-1. Download Docker Desktop for Windows from the official Docker website.
-2. Double-click the installer and follow the on-screen instructions to complete the installation.
-3. Once the installation is complete, Docker Desktop will start automatically.
-
-### Docker Desktop (Linux)
-
-1. Open a terminal.
-2. Run the following command to install Docker:
-
-```bash
-sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io
-```
-
-Once the installation is complete, start the Docker service:
-```bash
-sudo systemctl start docker
-```
-
-### Docker Compose
-1. Download Docker Compose from the official Docker website.
-2. Depending on your operating system, you may need to make the Docker Compose binary executable. Use the following command:
-```bash
-sudo chmod +x /usr/local/bin/docker-compose
+4. Установите docker-compose
+```sh
+sudo apt-get install docker-compose
 ```
 Проверьте корректность установки с помощью команды:
-```bash
+```sh
 docker-compose --version
 ```
-
-> **_Примечание:_** Если Вы не пользуетесь **Docker** и хотите использовать проект на windows-хосте, то в файле `requirements.txt` рекомендуется поменять `psycopg2-binary` на просто `psycopg2`.
-
-### Деплой проекта
+Если все сделано правильно, должна отобразиться версия docker-compose.
 
 
+### Установка Docker Desktop на Windows
+
+> Подробная установка на англ. языке - https://docs.docker.com/desktop/install/windows-install/
+
+1. Убеждаемся, что наше устройство соответствует системным требованиям Докера.
+
+2. Скачиваем установщик:  
+https://www.docker.com/products/docker-desktop/
+
+3. Запускаем установку. При установке есть два варианта - Hyper-V или WSL2, Докер рекомендует именно WSL2. Если после установки возникнут проблемы, то можно спокойно в настройках выбрать альтернативный вариант и попробовать его (Настройки -> Use the WSL 2 based engine (снять или установить галочку)). Может понадобиться перезагрузка компьютера.
+
+4. Запускаем Docker Desktop и оставляем его в покое.
 
 
+### Запуск проекта
 
-> ToDos:
+Скачиваем проект (из браузера или с помощью `git clone`), распаковываем в любой папке, переходим в эту папку. В Линукс удобнее всего это делать через терминал, а в Windows - из терминала VS Code или PowerShell (не используем cmd!)
 
-1. docker-compose build
-2. docker-compose up
+Пример на Линукс:
+```sh
+cd /home/user
+git clone https://github.com/stazherkb/bewise_task.git
+cd /home/user/bewise_task
+sudo docker-compose up
+```
+
+Пример на VSCode или PowerShell:
+```sh
+cd C:\projects
+git clone https://github.com/stazherkb/bewise_task.git
+cd bewise_task
+docker-compose up
+```
+
+Открываем в браузере http://localhost:8008/Docs. Если все прошло без ошибок, должен появиться простенький интерфейс с описанием API проекта и примерами запросов.
